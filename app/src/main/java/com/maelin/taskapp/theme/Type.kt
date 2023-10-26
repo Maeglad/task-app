@@ -1,4 +1,4 @@
-package com.maelin.taskapp.ui.theme
+package com.maelin.taskapp.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

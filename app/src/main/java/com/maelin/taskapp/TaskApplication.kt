@@ -1,4 +1,4 @@
-package com.maelin.taskapp.ui
+package com.maelin.taskapp
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

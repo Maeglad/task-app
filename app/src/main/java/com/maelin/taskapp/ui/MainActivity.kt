@@ -1,4 +1,4 @@
-package com.maelin.taskapp.ui.main
+package com.maelin.taskapp.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -34,8 +34,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.maelin.taskapp.ui.theme.TaskAppTheme
-import com.maelin.taskapp.ui.theme.Typography
+import com.maelin.taskapp.theme.TaskAppTheme
+import com.maelin.taskapp.theme.Typography
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

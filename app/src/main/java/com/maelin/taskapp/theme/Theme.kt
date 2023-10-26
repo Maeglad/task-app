@@ -1,4 +1,4 @@
-package com.maelin.taskapp.ui.theme
+package com.maelin.taskapp.theme
 
 import android.app.Activity
 import android.os.Build

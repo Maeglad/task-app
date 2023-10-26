@@ -1,4 +1,4 @@
-package com.maelin.taskapp.ui.main
+package com.maelin.taskapp.ui
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
@@ -20,7 +20,7 @@ class MainViewModel @Inject constructor() : ViewModel() {
     }
 
     fun getItems(): List<Int> {
-        return integerList.toList();
+        return integerList.toList()
     }
 
 }
