@@ -13,9 +13,16 @@ import javax.inject.Singleton
 @Module
 class DatabaseModule {
     @Provides
+    @Singleton
     fun provideTaskDao(taskDatabase: TaskDatabase): TaskDao {
         return taskDatabase.taskDao
     }
+
+    fun provideSubtaskDao(taskDatabase: TaskDatabase): SubtaskDao {
+        return taskDatabase.subtaskDao
+    }
+
+
     @Provides
     @Singleton
     fun provideTaskDatabase(@ApplicationContext context: Context): TaskDatabase {
@@ -23,5 +30,10 @@ class DatabaseModule {
                             TaskDatabase::class.java,
                             "TaskDatabase"
                     ).build()
+    }
+    @Provides
+    @Singleton
+    fun provideRepository(taskDatabase: TaskDatabase): TaskRepository {
+        return TaskRepository(taskDatabase)
     }
 }

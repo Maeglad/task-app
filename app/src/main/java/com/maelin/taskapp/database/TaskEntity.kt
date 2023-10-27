@@ -1,14 +1,16 @@
 package com.maelin.taskapp.database
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.Relation
 
 enum class TaskStatus {
     CREATED,
     COMPLETED
 }
 
-@Entity
+@Entity(tableName = "task")
 data class TaskEntity constructor(
         @PrimaryKey(autoGenerate = true)
         val id: Long,
@@ -16,3 +18,12 @@ data class TaskEntity constructor(
         val status: TaskStatus
     )
 
+data class TaskWithSubtasks(
+    @Embedded
+    val task: TaskEntity,
+    @Relation(
+        parentColumn = "id",
+        entityColumn = "taskId"
+    )
+    val subtasks: List<SubtaskEntity>
+)
