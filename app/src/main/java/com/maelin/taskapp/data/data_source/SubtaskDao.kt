@@ -12,11 +12,8 @@ interface SubtaskDao {
     @Query("select * from ${Subtask.TABLE_NAME}")
     fun getAllSubtasks(): Flow<List<Subtask>>
 
-    @Insert
-    suspend fun insertSubtask(subtask: Subtask)
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertSubtasks(subtasks: List<Subtask>)
+    suspend fun insertSubtasks(subtasks: List<Subtask>): List<Long>
 
     @Query("delete from ${Subtask.TABLE_NAME} where ${Subtask.TASK_ID_NAME} = :taskId and id not in (:updatedSubtaskIds)")
     suspend fun deleteOldSubtasks(taskId: Long, updatedSubtaskIds: List<Long>?)

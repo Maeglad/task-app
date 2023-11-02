@@ -12,7 +12,8 @@ data class Task constructor(
         val id: Long,
         val taskName: String,
         val status: TaskStatus,
-        val timeCreated: Long
+        val timeCreated: Long,
+        val timeDue: Long
     ) {
     companion object {
         const val TABLE_NAME = "task"

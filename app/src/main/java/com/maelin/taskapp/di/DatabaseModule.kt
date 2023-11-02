@@ -7,6 +7,10 @@ import com.maelin.taskapp.data.data_source.TaskDao
 import com.maelin.taskapp.data.data_source.TaskDatabase
 import com.maelin.taskapp.data.repository.TaskRepositoryImpl
 import com.maelin.taskapp.domain.repository.TaskRepository
+import com.maelin.taskapp.domain.use_case.CreateTaskUseCase
+import com.maelin.taskapp.domain.use_case.DeleteTaskUseCase
+import com.maelin.taskapp.domain.use_case.GetTasksUseCase
+import com.maelin.taskapp.domain.use_case.TaskUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,5 +46,15 @@ class DatabaseModule {
     @Singleton
     fun provideRepository(taskDatabase: TaskDatabase): TaskRepository {
         return TaskRepositoryImpl(taskDatabase)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTaskUseCases(taskRepository: TaskRepository): TaskUseCases {
+        return TaskUseCases(
+            getTasks = GetTasksUseCase(taskRepository),
+            createTask = CreateTaskUseCase(taskRepository),
+            deleteTask = DeleteTaskUseCase(taskRepository)
+        )
     }
 }

@@ -38,9 +38,14 @@ class TaskRepositoryImpl @Inject constructor(
     @Transaction
     override suspend fun insertTaskWithSubtasks(taskWithSubtasks: TaskWithSubtasks) {
         // create or update task
-        taskDao.insertTask(taskWithSubtasks.task)
+        val taskId = taskDao.insertTask(taskWithSubtasks.task)
         // create or update subtasks
-        taskWithSubtasks.subtasks?.run {
+        taskWithSubtasks.subtasks?.map { it ->
+            // set taskId to subtask
+            it.taskId = taskId
+            return@map it
+        }?.run {
+            // insert or update
             subtaskDao.insertSubtasks(this)
         }
         // delete subtasks that were left of from before

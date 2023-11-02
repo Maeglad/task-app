@@ -18,7 +18,7 @@ data class Subtask (
     @PrimaryKey(autoGenerate = true)
     val id: Long,
     @ColumnInfo(index = true, name = TASK_ID_NAME)
-    val taskId: Long,
+    var taskId: Long,
     val description: String,
     val order: Long
 ) {
