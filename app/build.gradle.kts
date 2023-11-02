@@ -21,9 +21,11 @@ android {
             useSupportLibrary = true
         }
 
-        kapt {
-            arguments {
-                arg("room.schemaLocation", "$projectDir/schemas")
+        javaCompileOptions {
+            annotationProcessorOptions {
+                compilerArgumentProviders(
+                    RoomSchemaArgProvider(File(projectDir, "schemas"))
+                )
             }
         }
     }
@@ -89,6 +91,7 @@ dependencies {
     // room
     val room_version = "2.6.0"
     implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
 
     // optional - Kotlin Extensions and Coroutines support for Room
@@ -97,6 +100,15 @@ dependencies {
 
 }
 
-kapt {
-    correctErrorTypes = true
+class RoomSchemaArgProvider(
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    val schemaDir: File
+) : CommandLineArgumentProvider {
+
+    override fun asArguments(): Iterable<String> {
+        // Note: If you're using KSP, change the line below to return
+        // listOf("room.schemaLocation=${schemaDir.path}").
+        return listOf("-Aroom.schemaLocation=${schemaDir.path}")
+    }
 }
