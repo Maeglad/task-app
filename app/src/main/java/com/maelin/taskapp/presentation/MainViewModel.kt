@@ -1,4 +1,4 @@
-package com.maelin.taskapp.ui
+package com.maelin.taskapp.presentation
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel

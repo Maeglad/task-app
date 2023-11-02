@@ -1,4 +1,4 @@
-package com.maelin.taskapp.ui
+package com.maelin.taskapp.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
