@@ -3,6 +3,7 @@ package com.maelin.taskapp.data.repository
 import androidx.room.Transaction
 import com.maelin.taskapp.data.data_source.TaskDatabase
 import com.maelin.taskapp.domain.model.Task
+import com.maelin.taskapp.domain.model.TaskStatus
 import com.maelin.taskapp.domain.model.TaskWithSubtasks
 import com.maelin.taskapp.domain.repository.TaskRepository
 import kotlinx.coroutines.flow.Flow
@@ -51,5 +52,15 @@ class TaskRepositoryImpl @Inject constructor(
         // delete subtasks that were left of from before
         val updatedSubtaskIds = taskWithSubtasks.subtasks?.map { it.id }
         subtaskDao.deleteOldSubtasks(taskWithSubtasks.task.id, updatedSubtaskIds)
+    }
+
+    override suspend fun updateTaskStatus(
+        task: Task,
+        newStatus: TaskStatus
+    ) {
+        taskDao.updateTaskStatus(
+            task.id,
+            newStatus
+        )
     }
 }

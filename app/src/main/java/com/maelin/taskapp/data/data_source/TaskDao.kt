@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import com.maelin.taskapp.domain.model.Task
+import com.maelin.taskapp.domain.model.TaskStatus
 import com.maelin.taskapp.domain.model.TaskWithSubtasks
 import kotlinx.coroutines.flow.Flow
 
@@ -23,5 +24,10 @@ interface TaskDao {
     suspend fun insertTask(task: Task): Long
 
     @Delete
-    suspend fun deleteTask(task: Task): Long
+    suspend fun deleteTask(task: Task)
+
+    @Query("update ${Task.TABLE_NAME} " +
+            "set ${Task.STATUS_NAME} = :newStatus " +
+            "where  ${Task.ID_NAME} = :taskId")
+    suspend fun updateTaskStatus(taskId: Long, newStatus: TaskStatus)
 }

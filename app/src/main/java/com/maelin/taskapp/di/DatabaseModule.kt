@@ -7,6 +7,7 @@ import com.maelin.taskapp.data.data_source.TaskDao
 import com.maelin.taskapp.data.data_source.TaskDatabase
 import com.maelin.taskapp.data.repository.TaskRepositoryImpl
 import com.maelin.taskapp.domain.repository.TaskRepository
+import com.maelin.taskapp.domain.use_case.UpdateTaskStatusUseCase
 import com.maelin.taskapp.domain.use_case.CreateTaskUseCase
 import com.maelin.taskapp.domain.use_case.DeleteTaskUseCase
 import com.maelin.taskapp.domain.use_case.GetTasksUseCase
@@ -54,7 +55,8 @@ class DatabaseModule {
         return TaskUseCases(
             getTasks = GetTasksUseCase(taskRepository),
             createTask = CreateTaskUseCase(taskRepository),
-            deleteTask = DeleteTaskUseCase(taskRepository)
+            deleteTask = DeleteTaskUseCase(taskRepository),
+            updateTaskStatus = UpdateTaskStatusUseCase(taskRepository)
         )
     }
 }
