@@ -21,7 +21,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.List
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -46,7 +45,6 @@ import com.maelin.taskapp.presentation.task_list.components.TaskItem
 import com.maelin.taskapp.theme.TaskAppTheme
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TaskListSection(
     modifier: Modifier = Modifier,
@@ -54,7 +52,6 @@ fun TaskListSection(
     state: TaskListState,
     onEvent: (TaskEvent) -> Unit
 ) {
-    //val state = viewModel.state.collectAsState().value
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
 
