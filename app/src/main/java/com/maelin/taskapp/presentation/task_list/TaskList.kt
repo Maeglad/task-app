@@ -61,7 +61,7 @@ fun TaskListSection(
                 onClick = {
 
                 },
-                modifier = modifier.background(MaterialTheme.colorScheme.primary)
+                modifier = Modifier.background(MaterialTheme.colorScheme.primary)
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,

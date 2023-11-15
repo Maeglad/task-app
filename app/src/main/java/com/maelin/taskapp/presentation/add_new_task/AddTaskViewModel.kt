@@ -19,8 +19,8 @@ class AddTaskViewModel @Inject constructor(
             order = 1
         ))
 
-    private val _state = MutableStateFlow(AddNewTaskState())
-    val state: StateFlow<AddNewTaskState> = _state.asStateFlow()
+//    private val _state = MutableStateFlow(AddNewTaskState())
+//    val state: StateFlow<AddNewTaskState> = _state.asStateFlow()
 
     
 }
